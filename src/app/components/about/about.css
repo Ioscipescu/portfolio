@@ -1,0 +1,65 @@
+.fake-terminal {
+  background-color: #1e1e2e;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  color: #cdd6f4;
+  font-family: 'Hack', monospace;
+  font-size: 1.25rem;
+  min-height: 1.25rem;
+  line-height: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.editor-area {
+  flex-grow: 1;
+}
+
+.line {
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+
+.line-prefix {
+  display: inline-block;
+  text-align: right;
+  padding-right: 1em;
+  color: #cdd6f4;
+  user-select: none;
+}
+
+.username {
+  color: #a6e3a1;
+}
+
+.line-content {
+  flex-grow: 1;
+}
+.line-content > div,
+.line-content > app-typewriter {
+  margin: 0;
+  padding: 0;
+}
+
+.caret-thin {
+  display: inline-block;
+  vertical-align: middle;
+  width: 2px;
+  height: 1.25em;
+  background-color: #ffffff;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}

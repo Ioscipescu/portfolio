@@ -1,0 +1,107 @@
+.navbar {
+  font-family: 'Hack', monospace;
+  background-color: #22242d;
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 10000;
+}
+
+.nav-links {
+  list-style: none;
+  color: #7f849c;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  position: relative;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  color: #bac2de;
+  padding: 0.4em 1em 0.4em 2.2em;
+  text-decoration: none;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.nav-links a::before {
+  position: absolute;
+  left: 0.1em;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 1.5em;
+  width: 1px;
+  background-color: #6c7086;
+  content: '';
+}
+
+.navbar .nav-links li:first-child a::before {
+  width: 2px;
+  background-color: transparent;
+}
+
+.navbar .nav-links li:first-child a.active-link::before {
+  background-color: #fab387;
+}
+
+.navbar .nav-links a.active-link::before {
+  width: 2px;
+  background-color: #fab387;
+}
+
+.nav-links .active-link {
+  font-weight: bold;
+  font-style: italic;
+  color: #89dceb;
+}
+
+.nav-links a:hover {
+  background-color: #5c6370;
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-left: 2em;
+}
+
+.icon.x::before,
+.icon.x::after {
+  content: '';
+  position: absolute;
+  width: 0.7em;
+  height: 0.1em;
+  background-color: #6c7086;
+  border-radius: 1px;
+}
+
+a.active-link .icon.x::after,
+a.active-link .icon.x::before {
+  background-color: #f38ba8;
+}
+
+.icon.x::before {
+  transform: rotate(45deg);
+}
+
+.icon.x::after {
+  transform: rotate(-45deg);
+}
+
+.icon.dot::before {
+  content: '';
+  width: 0.5em;
+  height: 0.5em;
+  background-color: #fab387;
+  border-radius: 50%;
+}

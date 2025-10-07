@@ -1,0 +1,85 @@
+<div class="fake-terminal">
+  <div class="editor-area">
+    <div class="line" *ngFor="let line of contentLines; let i = index">
+      <span class="line-number" [class.current-line]="lineNumbers[i].isCurrent">
+        {{ lineNumbers[i].display }}
+      </span>
+
+      <div class="line-content">
+        <ng-container [ngSwitch]="line.type">
+          <div *ngSwitchCase="'static'" [innerHTML]="line.text"></div>
+          <app-typewriter
+            *ngSwitchCase="'typewriter'"
+            [texts]="typewriterContent"
+            [staticText]="typewriteStatic"
+            (modeChange)="onTypewriterModeChange($event)"
+            (charIndex)="onTypewriterIndexChange($event)"
+          ></app-typewriter>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="status-bar">
+    <div class="left-status">
+      <span
+        class="mode"
+        [ngClass]="{
+          'mode-normal': currentVimMode === 'normal',
+          'mode-insert': currentVimMode === 'insert',
+          'mode-visual': currentVimMode === 'visual',
+        }"
+        >-- {{ currentVimMode.toUpperCase() }} --</span
+      >
+      <span class="filename">welcome.txt</span>
+    </div>
+    <div class="right-status">
+      <span class="filetype">Text</span>
+      <span class="percentage">{{ Math.floor((2 / (contentLines.length + 1)) * 100) }}%</span>
+      <span class="position">
+        <span class="left">{{ 7 + currentIndex }}</span>
+        <span class="colon">:</span>
+        <span class="right">2</span>
+      </span>
+    </div>
+  </div>
+</div>
+
+<section class="coursework">
+  <h2>Current Position and Studies</h2>
+  <div class="course-list">
+    <div class="course-card" *ngFor="let job of jobs">
+      <h3>{{ job.name }}</h3>
+      <p>{{ job.employer }}</p>
+      <div class="attribute-list">
+        <span class="course-type">{{ job.years }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coursework">
+  <h2>Current Coursework</h2>
+  <div class="course-list">
+    <div class="course-card" *ngFor="let course of courses">
+      <h3>{{ course.name }}</h3>
+      <p>{{ course.number }} | {{ course.semester }}</p>
+      <div class="attribute-list">
+        <span class="course-type">{{ course.type }}</span>
+        <span class="course-credits">{{ course.credits }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="coursework">
+  <h2>Current Projects</h2>
+  <div class="course-list">
+    <div class="course-card" *ngFor="let project of projects">
+      <h3>{{ project.name }}</h3>
+      <p>{{ project.type }} | {{ project.time }}</p>
+      <div class="attribute-list">
+        <span class="course-type" *ngFor="let tech of project.techs">{{ tech }}</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Hack, 'Regular';
+  background: #1e1e2e;
+  background: linear-gradient(
+    180deg,
+    rgba(30, 30, 46, 1) 0%,
+    rgba(30, 30, 46, 1) 30%,
+    rgba(90, 0, 115, 1) 95%,
+    rgba(90, 0, 115, 1) 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@import 'hack-font';
