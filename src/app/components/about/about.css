@@ -20,7 +20,8 @@
 .line {
   display: flex;
   align-items: flex-start;
-  line-height: 1.5;
+  line-height: 1.5em;
+  min-height: 1.5em;
 }
 
 .line-prefix {
@@ -35,13 +36,28 @@
   color: #a6e3a1;
 }
 
+.keyword {
+  color: #89b4fa;
+}
+
+.typed {
+  color: #94e2d5;
+}
+
 .line-content {
   flex-grow: 1;
 }
-.line-content > div,
-.line-content > app-typewriter {
+.line-content > div {
   margin: 0;
   padding: 0;
+}
+
+.profile-photo {
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
 }
 
 .caret-thin {
@@ -49,7 +65,7 @@
   vertical-align: middle;
   width: 2px;
   height: 1.25em;
-  background-color: #ffffff;
+  background-color: #f5e0dc;
   animation: blink 1s infinite;
 }
 

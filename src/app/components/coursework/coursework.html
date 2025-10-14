@@ -1,0 +1,16 @@
+<div class="fake-terminal">
+  <div class="editor-area">
+    <div class="line"><span class="line-prefix"><span class="username">ben</span>@computer (main)></span><div class="line-content"><span class="keyword">tree</span> <span class="typed"> Courses/</span></div></div>
+  </div>
+
+  <div class="line"><div class="line-content"><ul class="nav-list" >
+      <li
+        *ngFor="let item of navItems; let last = last"
+        [class.last]="last"
+        [style.paddingLeft.rem]="0"
+      >
+        <tree-node [item]="item" [level]="0" [path] = "[]" (nodeClicked)="onNodeClicked($event)"
+></tree-node>
+      </li>
+  </ul></div></div>
+</div>

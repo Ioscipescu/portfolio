@@ -42,7 +42,7 @@ import { CommonModule } from '@angular/common';
       .highlighted-text {
         background-color: #696969;
         vertical-align: middle;
-        color: #ffffff;
+        color: #cdd6f4;
       }
 
       .cursor {
@@ -52,7 +52,7 @@ import { CommonModule } from '@angular/common';
       }
 
       .caret-block {
-        background-color: #fff;
+        background-color: #f5e0dc;
         color: #000;
         font-size: inherit;
 
@@ -71,7 +71,7 @@ import { CommonModule } from '@angular/common';
         vertical-align: middle;
         width: 1px;
         height: 1.5em;
-        background-color: #ffffff;
+        background-color: #696969;
       }
 
       .visual-mode {

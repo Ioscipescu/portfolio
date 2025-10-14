@@ -47,6 +47,13 @@
 <section class="coursework">
   <h2>Current Position and Studies</h2>
   <div class="course-list">
+    <div class="course-card" *ngFor="let edu of education">
+      <h3>{{ edu.level }} in {{ edu.major }}</h3>
+      <p>{{ edu.school }}</p>
+      <div class="attribute-list">
+        <span class="course-type">{{ edu.years }}</span>
+      </div>
+    </div>
     <div class="course-card" *ngFor="let job of jobs">
       <h3>{{ job.name }}</h3>
       <p>{{ job.employer }}</p>

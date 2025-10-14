@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Typewriter } from '../typewriter';
+import { Shared } from '../../shared';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,38 @@ import { Typewriter } from '../typewriter';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {
+export class Home implements OnInit {
+  constructor(private shared: Shared) {}
+
+  courses: {
+    name: string;
+    number: string;
+    semester: string;
+    type: string;
+    credits: string;
+    instructor: string;
+  }[] = [];
+
+  jobs: {
+    name: string;
+    employer: string;
+    years: string;
+  }[] = [];
+
+  education: {
+    school: string;
+    major: string;
+    level: string;
+    years: string;
+  }[] = [];
+
+  projects: {
+    name: string;
+    type: string;
+    time: string;
+    techs: string[];
+  }[] = [];
+
   Math = Math;
 
   typewriterContent: string[] = ['Developer.', 'Mathematician.', 'Problem Solver.', 'Nerd.'];
@@ -63,100 +95,13 @@ export class Home {
     this.currentIndex = index;
   }
 
-  courses = [
-    {
-      name: 'Automota, Logic, and Computation',
-      number: 'CS 422',
-      semester: 'Fall 2025',
-      type: 'Computer Science Elective',
-      credits: '4 Credits',
-    },
-    {
-      name: 'Embedded Systems and Machine Learning',
-      number: 'CS 528',
-      semester: 'Fall 2025',
-      type: 'Computer Science Elective',
-      credits: '4 Credits',
-    },
-    {
-      name: 'Advanced Calculus I',
-      number: 'MATH 417',
-      semester: 'Fall 2025',
-      type: 'Mathimatics Core',
-      credits: '3 Credits',
-    },
-    {
-      name: 'Combinatorics I',
-      number: 'MATH 501',
-      semester: 'Fall 2025',
-      type: 'Mathimatics Elective',
-      credits: '3 Credits',
-    },
-    {
-      name: 'Honors Thesis',
-      number: 'HONR 499',
-      semester: 'Fall 2025',
-      type: 'Honors Core',
-      credits: '3 Credits',
-    },
-    {
-      name: 'Chamber Music',
-      number: 'HONR 397',
-      semester: 'Fall 2025',
-      type: 'Honors Elective',
-      credits: '1 Credit',
-    },
-    {
-      name: 'Cello Lessons',
-      number: 'MU 170P',
-      semester: 'Fall 2025',
-      type: 'Elective',
-      credits: '1 Credit',
-    },
-    {
-      name: 'Cello Ensemble',
-      number: 'MU 408',
-      semester: 'Fall 2025',
-      type: 'Elective',
-      credits: '1 Credit',
-    },
-  ];
-
-  jobs = [
-    {
-      name: 'Computer Science Major',
-      employer: 'Colorado State University',
-      years: 'Fall 2022 - May 2026',
-    },
-    {
-      name: 'Mathematics Major',
-      employer: 'Colorado State University',
-      years: 'Fall 2022 - May 2026',
-    },
-    {
-      name: 'Student IT',
-      employer: 'Colorado State University Honors Department',
-      years: 'Spring 2023 - Present',
-    },
-    {
-      name: 'Intern',
-      employer: 'Colorado State University High Performance Computing Department',
-      years: 'Summer 2025 - Present',
-    },
-  ];
-
-  projects = [
-    {
-      name: 'Lambda Calculus Mechanization',
-      type: 'Honors Thesis',
-      time: 'May 2025 - Present',
-      techs: ['Rocq Proof Assistant'],
-    },
-    {
-      name: 'Portfolio Website',
-      type: 'Personal Project',
-      time: 'Fall 2025',
-      techs: ['Angular', 'Typescript', 'HTML', 'CSS'],
-    },
-  ];
+  ngOnInit(): void {
+    this.courses = this.shared.getCourses();
+    this.courses = this.courses.filter((c) => c.semester === 'Fall 2025');
+    this.jobs = this.shared.getJobs();
+    this.jobs = this.jobs.filter((c) => c.years.includes('Present'));
+    this.education = this.shared.getEducation();
+    this.education = this.education.filter((c) => c.years.includes('Expected'));
+    this.projects = this.shared.getProjects();
+  }
 }
